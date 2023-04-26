@@ -122,6 +122,8 @@ int main(void)
 			break;
 		}
 		parse_command(command, args);
+		if (_strcmp(args[0], "exit") == 0)
+			exit(EXIT_SUCCESS);
 		command_found = find_command(args);
 		if (command_found)
 			execute_command(args);

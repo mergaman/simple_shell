@@ -99,9 +99,6 @@ void execute_command(char **args)
 	pid_t pid;
 	int status;
 
-	if (_strcmp(args[0], "exit") == 0)
-		exit(EXIT_SUCCESS);
-
 	pid = fork();
 	if (pid == -1)
 	{
@@ -140,6 +137,8 @@ int main(void)
 			break;
 		}
 		parse_command(command, args);
+		if (_strcmp(args[0], "exit") == 0)
+			exit(EXIT_SUCCESS);
 		if (_strcmp(args[0], "env") == 0)
 			env_builtin();
 		else
