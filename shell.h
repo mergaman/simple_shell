@@ -15,6 +15,7 @@ void prompt(char **av, char **env);
 void parse_command(char *command, char **args);
 int find_command(char **args);
 void execute_command(char **args);
+int env_builtin(void);
 
 
 size_t _strlen(const char *s);
