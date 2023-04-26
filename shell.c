@@ -3,13 +3,13 @@
  * main - Display a prompt and wait for the user to type a command.
  * A command line always ends with a new line
  *
- * return - return (1) sucess
+ *  Return: Always 0 (Success)
  */
-int main()
+int main(void)
 {
 	char *command = NULL;
 	size_t command_size = 0;
-	int status,len;
+	int status, len;
 	pid_t pid;
 	char *args[2];
 
@@ -22,9 +22,9 @@ int main()
 			break;
 		}
 		len = strlen(command);
-		if (len > 0 && command[len-1] == '\n')
+		if (len > 0 && command[len - 1] == '\n')
 		{
-			command[len-1] = '\0';
+			command[len - 1] = '\0';
 		}
 		pid = fork();
 		if (pid == -1)
@@ -32,10 +32,11 @@ int main()
 			printf("Error: Failed to create child process\n");
 			exit(EXIT_FAILURE);
 		}
-		else if (pid == 0) {
+		else if (pid == 0)
+		{
 		args[0] = command;
 		args[1] = NULL;
-		if(execve(command, args, NULL) == -1)
+		if (execve(command, args, NULL) == -1)
 		{
 			printf("%s: Command not found\n", command);
 			exit(EXIT_FAILURE);
@@ -44,6 +45,5 @@ int main()
 			waitpid(pid, &status, 0);
 		}
 	free(command);
-	return 0;
-}
+	return (0);	}
 
