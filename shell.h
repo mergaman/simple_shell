@@ -16,7 +16,7 @@ void parse_command(char *command, char **args);
 int find_command(char **args);
 void execute_command(char **args);
 int env_builtin(void);
-
+char *_getline(void);
 
 size_t _strlen(const char *s);
 int _strcmp(char *s1, char *s2);
